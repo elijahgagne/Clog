@@ -1,0 +1,17 @@
+{
+  "name": "clog",
+  "version": "0.1.0",
+  "description": "Clog",
+  "main": "server.js",
+  "contributors": [
+    {
+      "name": "Elijah W. Gagne",
+      "email": "ewg@elijahg.com",
+      "url": "https://elijahg.com/"
+    },
+    {
+      "name": "Jonathan Crossett",
+      "email": "jonathan@crossett.net"
+    }
+  ]
+}
