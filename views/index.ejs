@@ -1,21 +1,47 @@
 <script src="/lib/jquery/dist/jquery.min.js"></script>
-<script src="/js/main.js"></script>
 
 <%- contentFor('style') %>
 <link href="/css/site.css" rel="stylesheet" />
+<link href="/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="/lib/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet" />
 
 <%- contentFor('body') %>
-<ul class="pages">
-  <li class="chat page">
-    <div class="chatArea">
-      <ul class="messages"></ul>
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="btn btn-success navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </button>
+      <div id="logo">
+        <a href='/'>
+          <h4>Clog</h4>
+        </a>
+      </div>
     </div>
-    <input class="inputMessage" placeholder="Type here..."/>
-  </li>
-  <li class="login page">
-    <div class="form">
-      <h3 class="title">What's your name?</h3>
-      <input class="usernameInput" type="text" maxlength="14" />
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="nav">
+          <a href="/">Home</a>
+        </li>
+      </ul>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
+<section class="container main">
+  
+  <div>
+    <% if(user != "") { %>
+    <a href="/logout">Logout</a>
+    <br />
+    You are logged in as <%= user %>
+    <br />
+    <br />
+    <a href="/chat">Enter the chat room</a>
+    <% } else { %>
+    <a href="/login?guest=true">Sign in as guest</a>
+    <% } %>
+  </div>
+  <div>
+  </div>
+</section>
+

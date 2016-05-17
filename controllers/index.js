@@ -1,10 +1,12 @@
 (function (controllers) {
   
-	var homeController = require("./homeController.js");
+  var homeController = require("./homeController.js");
+  var chatController = require("./chatController.js");
 	var websocketController = require("./websocketController.js");
     
   controllers.init = function (app, server, ws) {
-		homeController.init(app);
+    homeController.init(app);
+    chatController.init(app);
 		websocketController.init(app, server, ws);
 
 		app.use(function (req, res) {

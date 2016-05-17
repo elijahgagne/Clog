@@ -27,6 +27,12 @@ html, body {
   padding: 0;
 }
 
+.main {
+    font: 14px Helvetica, Arial, sans-serif;
+    color: #222222;
+    margin-top: 100px;
+}
+
 ul {
   list-style: none;
   word-wrap: break-word;
@@ -48,7 +54,29 @@ ul {
 }
 
 /* Login Page */
+.loginDiv {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  text-align: center;
+  top: 30%;
+}
 
+.guestUsername {
+  border: none;
+  border-bottom: 2px solid #000;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  letter-spacing: 3px;
+  width: 400px;
+  font-size: 200%;
+  font-weight: 100;
+}
+
+/*
 .login.page {
   background-color: #000;
 }
@@ -86,7 +114,7 @@ ul {
   color: #fff;
   font-weight: 100;
 }
-
+*/
 /* Chat page */
 
 .chat.page {

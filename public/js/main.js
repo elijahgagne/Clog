@@ -1,15 +1,13 @@
 $(function () {
 	// Initialize variables
 	var $window = $(window);
-	var $usernameInput = $('.usernameInput'); // Input for username
 	var $inputMessage = $('.inputMessage'); // Input message input box
-	var $messages = $('.messages'); // Messages area
-	var $loginPage = $('.login.page'); // The login page
+  var $currentInput = $inputMessage.focus();
+  var $messages = $('.messages'); // Messages area
 	var $chatPage = $('.chat.page'); // The chatroom page
-	var $currentInput = $usernameInput.focus();
-	var username;
-	var socket;
-	openWebSocket();
+ 	var socket;
+  openWebSocket();
+  $chatPage.show();
 	
 	// https://learn.jquery.com/events/introduction-to-custom-events/
 	$(document).on("myCustomEvent", { testing: 123 }, function (event, data) {
@@ -55,19 +53,14 @@ $(function () {
 		
 		socket.onclose = function (e) {
 			openWebSocket();
-		};
+    };
+    
+    setTimeout(function () { joinChat() }, 2000);
 	}
 	
-	function setUsername() {
-		username = cleanInput($usernameInput.val().trim());
-		if (username) {
-			$loginPage.fadeOut();
-			$chatPage.show();
-			$loginPage.off('click');
-			$currentInput = $inputMessage.focus();
-			socket.send(JSON.stringify({ "ns": "system", "cmd": "set name", "name": username }));
-			socket.send(JSON.stringify({ "ns": "chat", "cmd": "join" }));
-		}
+	function joinChat() {
+		socket.send(JSON.stringify({ "ns": "system", "cmd": "set name", "name": "temp_ewg" }));
+		socket.send(JSON.stringify({ "ns": "chat", "cmd": "join" }));
 	}
 	
 	function sendMessage() {
@@ -105,17 +98,8 @@ $(function () {
 		}
 		// When the client hits ENTER on their keyboard
 		if (event.which === 13) {
-			if (username) {
-				sendMessage();
-			} else {
-				setUsername();
-			}
+      sendMessage();
 		}
-	});
-	
-	// Focus input when clicking anywhere on login page
-	$loginPage.click(function () {
-		$currentInput.focus();
 	});
 	
 	// Focus input when clicking on the message input's border

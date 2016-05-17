@@ -1,4 +1,6 @@
 (function (websocketController) {
+  
+  var auth = require("../auth");
 
 	websocketController.init = function (app, server, ws) {
 
