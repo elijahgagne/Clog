@@ -59,7 +59,7 @@ $(function () {
 	}
 	
 	function joinChat() {
-		socket.send(JSON.stringify({ "ns": "system", "cmd": "set name", "name": "temp_ewg" }));
+		//socket.send(JSON.stringify({ "ns": "system", "cmd": "set name", "name": "temp_ewg" }));
 		socket.send(JSON.stringify({ "ns": "chat", "cmd": "join" }));
 	}
 	

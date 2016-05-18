@@ -22,6 +22,10 @@
   
   auth.getUsername = function (req) {
     var token = req.cookies['access_token'] || (req.body && req.body.access_token) || (req.query && req.query.access_token) || req.headers['x-access-token'];
+    return auth.getUsernameFromToken(token);
+  };
+  
+  auth.getUsernameFromToken = function (token) {
     if (token) {
       try {
         var decoded = jwt.decode(token, jwtTokenSecret);
@@ -29,7 +33,7 @@
       } catch (err) { }
     }
     return "";
-  };
+  }
 
 	auth.init = function (app) {
 		app.get("/login", function (req, res) {
